@@ -37,6 +37,7 @@ iobjdump -R ./level5 | grep exit                                                
 objdump -t ./level5 | grep o
 080484a4 g     F .text	0000001e              o
 ```
+
 Both addresses are find, now lets find the offset of the buffer:
 
 ```bash
