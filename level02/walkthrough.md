@@ -59,7 +59,7 @@ payload = shell code + nop instruction * (padding - shellcode.lenght) + address 
 
 [shell code from](http://shell-storm.org/shellcode/files/shellcode-575.html)
 
-syze of shell code : (39 bytes).
+syze of shell code : (21 bytes).
 
 So final Buffer is : 
 
