@@ -57,10 +57,10 @@ int main(int argc,char **argv)
   int j;
   undefined4 *puVar1;
   byte i;
-  undefined4 buffer_10 [10];
+  char buffer_10 [10];
   char buffer_36 [36];
   char *lang;
-  undefined4 *pointer_buffer_10;
+  char *pointer_buffer_10;
   
   i = 0;
   if (argc == 3) {
@@ -73,12 +73,12 @@ int main(int argc,char **argv)
     strncpy(buffer_36,argv[2],32);
     lang = getenv("LANG");
     if (lang != (char *)0x0) {
-      j = memcmp(lang,&DAT_0804873d,2);
+      j = memcmp(lang,"fi",2);
       if (j == 0) {
         language = 1;
       }
       else {
-        j = memcmp(lang,&nl,2);
+        j = memcmp(lang,"nl",2);
         if (j == 0) {
           language = 2;
         }
