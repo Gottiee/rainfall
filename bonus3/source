@@ -1,1 +1,38 @@
-
+int main(int argc,char **argv)
+{
+  int i;
+  undefined4 *pointer;
+  byte bVar1;
+  undefined4 buffer_16_pass [16];
+  undefined local_57;
+  char buffer_66 [66];
+  FILE *pass_fd;
+  
+  bVar1 = 0;
+  pass_fd = fopen("/home/user/end/.pass","r");
+  pointer = buffer_16_pass;
+  for (i = 33; i != 0; i = i + -1) {
+    *pointer = 0;
+    pointer = pointer + (uint)bVar1 * -2 + 1;
+  }
+  if ((pass_fd == (FILE *)0x0) || (argc != 2)) {
+    i = -1;
+  }
+  else {
+    fread(buffer_16_pass,1,66,pass_fd);
+    local_57 = 0;
+    i = atoi(argv[1]);
+    *(undefined *)((int)buffer_16_pass + i) = 0;
+    fread(buffer_66,1,65,pass_fd);
+    fclose(pass_fd);
+    i = strcmp((char *)buffer_16_pass,argv[1]);
+    if (i == 0) {
+      execl("/bin/sh","sh",0);
+    }
+    else {
+      puts(buffer_66);
+    }
+    i = 0;
+  }
+  return i;
+}
